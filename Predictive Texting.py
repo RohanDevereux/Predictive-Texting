@@ -37,13 +37,11 @@ class Trigram_Language_Model:
 
         bigram_1 = ('<s>', start_word)
         
-        # ADD CODE HERE
         sentence = ['<s>', start_word]
         while sentence [-1] != '</s>':
             last_words = sentence [-2] + " " + sentence [-1]
             keys =  list(self.conditional_distribution [last_words].keys ())
             values =  list(self.conditional_distribution [last_words].values())
-            #print (keys, values)
             next_word = np.random.choice (keys, 1, p=values)
             sentence.append  (next_word [0])
         return " ".join (sentence [1:-1])
